@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 # Archivos fuente
-SRC = main3.c
+SRC = main.c
 
 # Archivos objeto
 OBJ = $(SRC:.c=.o)
