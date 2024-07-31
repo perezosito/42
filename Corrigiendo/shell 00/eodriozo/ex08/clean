@@ -1,0 +1,1 @@
+find . -type f \( -name '*~.*' -o -name '#*#.*' \) -exec echo "Archivo encontrado y eliminado:" {} \; -exec rm {} +

@@ -1,0 +1,1 @@
+ls -lt --indicator-style=slash --ignore=".*" --format=commas
