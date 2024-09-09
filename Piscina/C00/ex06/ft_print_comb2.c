@@ -14,40 +14,43 @@
 
 void	ft_print_comb2(void)
 {
-	char	digit1;
-	char	digit2;
-	char	digit3;
-	char	digit4;
+	char	n1;
+	char	n2;
+	char	n3;
+	char	n4;
 
-	digit1 = '0';
-	while (digit1 <= '9')
+	n1 = '0';
+	while (n1 <= '9')
 	{
-		digit2 = '0';
-		while (digit2 <= '9')
+		n2 = '0';
+		while (n2 <= '9')
 		{
-			digit3 = '0';
-			while (digit3 <= '9')
+			n3 = n1;
+			while (n3 <= '9')
 			{
-				digit4 = '0';
-				while (digit4 <= '9')
+				n4 = (n3 == n1) ? n2 + 1 : '0';
+				while (n4 <= '9')
 				{
-					write(1, &digit1, 1);
-					write(1, &digit2, 1);
+					write(1, &n1, 1);
+					write(1, &n2, 1);
 					write(1, " ", 1);
-					write(1, &digit3, 1);
-					write(1, &digit4, 1);
-					digit4++;
+					write(1, &n3, 1);
+					write(1, &n4, 1);
+					if (!(n1 == '9' && n2 == '8'))
+						write(1, ", ", 2);
+					n4++;
 				}
-				digit3++;
+				n3++;
 			}
-			digit2++;
+			n2++;
 		}
-		digit1++;
+		n1++;
 	}
 }
 
-/*int	main(void)
+
+int	main(void)
 {
 	ft_print_comb2();
 	return (0);
-}*/
+}
