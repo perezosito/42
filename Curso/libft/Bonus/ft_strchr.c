@@ -9,17 +9,19 @@
 /*   Updated: 2024/10/13 13:48:00 by miperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 // ft_strchr.c
 #include "libft.h"
 
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-    while (*s)
-    {
-        if (*s == (char)c)
-            return (char *)s;
-        s++;
-    }
-    return (*s == (char)c) ? (char *)s : NULL;
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }
-

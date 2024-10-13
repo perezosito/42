@@ -9,13 +9,15 @@
 /*   Updated: 2024/10/13 14:00:49 by miperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// ft_strtrim.c
+// ft_strtrim_bonus.c
 #include "libft.h"
 #include <stdlib.h>
 
 char *ft_strtrim(char const *s1, char const *set)
 {
+    if (!s1 || !set)
+        return NULL;
+
     size_t start = 0;
     size_t end = ft_strlen(s1);
 
@@ -26,9 +28,11 @@ char *ft_strtrim(char const *s1, char const *set)
 
     char *trimmed_str = (char *)malloc(end - start + 1);
     if (!trimmed_str)
-        return NULL;
+        return NULL; // Manejo de error si la memoria no se asigna.
 
     ft_strlcpy(trimmed_str, s1 + start, end - start + 1);
+    trimmed_str[end - start] = '\0'; // Asegurarse de terminar la cadena.
+    
     return trimmed_str;
 }
 

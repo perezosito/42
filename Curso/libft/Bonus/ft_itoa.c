@@ -10,43 +10,62 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// ft_itoa.c
 #include "libft.h"
 #include <stdlib.h>
 
-static int get_num_length(int n)
+static int	get_num_length(int n)
 {
-    int length = (n <= 0) ? 1 : 0;
+	int	length;
 
-    while (n)
-    {
-        n /= 10;
-        length++;
-    }
-    return length;
+	length = 0;
+	if (n <= 0)
+		length = 1;
+	while (n)
+	{
+		n /= 10;
+		length++;
+	}
+	return (length);
 }
 
-char *ft_itoa(int n)
+static unsigned int	handle_negative(int n, char *str)
 {
-    int length = get_num_length(n);
-    char *str = (char *)malloc(length + 1);
-    unsigned int num;
-
-    if (!str)
-        return NULL;
-    
-    str[length] = '\0';
-    num = (n < 0) ? -n : n;
-
-    while (length--)
-    {
-        str[length] = (num % 10) + '0';
-        num /= 10;
-    }
-    
-    if (n < 0)
-        str[0] = '-';
-
-    return str;
+	if (n < 0)
+	{
+		str[0] = '-';
+		return (-n);
+	}
+	return (n);
 }
 
+static char	*create_string(int length)
+{
+	char	*str;
+
+	str = (char *)malloc(length + 1);
+	if (!str)
+		return (NULL);
+	str[length] = '\0';
+	return (str);
+}
+
+char	*ft_itoa(int n)
+{
+	unsigned int	num;
+	int				length;
+	char			*str;
+
+	length = get_num_length(n);
+	str = create_string(length);
+	if (!str)
+		return (NULL);
+	num = handle_negative(n, str);
+	while (length > 0)
+	{
+		if (n < 0 && length == 1)
+			break ;
+		str[--length] = (num % 10) + '0';
+		num /= 10;
+	}
+	return (str);
+}

@@ -12,35 +12,31 @@
 
 // ft_atoi.c
 #include "libft.h"
+#include <limits.h>
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-    int sign = 1;
-    long result = 0;
+	int		sign;
+	long	result;
 
-    // Ignorar espacios
-    while (*str == ' ' || (*str >= 9 && *str <= 13))
-        str++;
-
-    // Manejar el signo
-    if (*str == '-' || *str == '+')
-    {
-        if (*str == '-')
-            sign = -1;
-        str++;
-    }
-
-    // Convertir la cadena a número
-    while (*str >= '0' && *str <= '9')
-    {
-        result = result * 10 + (*str - '0');
-        str++;
-        // Manejar desbordamiento
-        if (result * sign > INT_MAX)
-            return -1; // o un valor que definas para indicar desbordamiento
-        if (result * sign < INT_MIN)
-            return 0; // o un valor que definas para indicar desbordamiento
-    }
-    return (int)(result * sign);
+	result = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+		if (result * sign > INT_MAX)
+			return (-1);
+		if (result * sign < INT_MIN)
+			return (0);
+	}
+	return ((int)(result * sign));
 }
-

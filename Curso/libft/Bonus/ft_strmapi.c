@@ -10,28 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// ft_strmapi.c
 #include "libft.h"
 #include <stdlib.h>
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    size_t i;
-    char *new_str;
+	size_t	i;
+	char	*new_str;
 
-    if (!s || !f)
-        return NULL;
-
-    new_str = (char *)malloc(ft_strlen(s) + 1);
-    if (!new_str)
-        return NULL;
-
-    for (i = 0; s[i]; i++)
-    {
-        new_str[i] = f(i, s[i]);
-    }
-    new_str[i] = '\0';
-    
-    return new_str;
+	if (!s || !f)
+		return (NULL);
+	new_str = (char *)malloc(ft_strlen(s) + 1);
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		new_str[i] = f(i, s[i]);
+		i++;
+	}
+	new_str[i] = '\0';
+	return (new_str);
 }
-

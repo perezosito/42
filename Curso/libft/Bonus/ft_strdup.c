@@ -14,16 +14,15 @@
 #include "libft.h"
 #include <stdlib.h>
 
-char *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
-    char *dup;
-    size_t len = ft_strlen(s1);
+	char	*dup;
+	size_t	len;
 
-    dup = (char *)malloc(len + 1);
-    if (!dup)
-        return NULL;
-
-    ft_strlcpy(dup, s1, len + 1);
-    return dup;
+	len = ft_strlen(s1);
+	dup = (char *)malloc(len + 1);
+	if (!dup)
+		return (NULL);
+	ft_strlcpy(dup, s1, len + 1);
+	return (dup);
 }
-

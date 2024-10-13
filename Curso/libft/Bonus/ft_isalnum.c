@@ -9,11 +9,11 @@
 /*   Updated: 2024/10/13 13:32:57 by miperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 //ft_isalnum.c
 #include "libft.h"
 
-int ft_isalnum(int c)
+int	ft_isalnum(int c)
 {
-    return (ft_isalpha(c) || ft_isdigit(c));
+	return (ft_isalpha(c) || ft_isdigit(c));
 }
-

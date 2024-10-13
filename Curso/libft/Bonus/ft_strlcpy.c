@@ -9,43 +9,22 @@
 /*   Updated: 2024/07/15 02:49:40 by miperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 // ft_strlcpy.c
 #include "libft.h"
-#include <stdio.h>
-unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char			*d;
-	const char		*s;
-	unsigned int	len;
+	size_t	i;
 
-	d = dest;
-	s = src;
-	len = 0;
-	while (*s && len + 1 < size)
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	i = 0;
+	while (i < dstsize - 1 && src[i])
 	{
-		*d++ = *s++;
-		len++;
+		dst[i] = src[i];
+		i++;
 	}
-	if (size > 0)
-	{
-		*d = '\0';
-	}
-	while (*s++)
-	{
-		len++;
-	}
-	return (len);
-}
-int main(void)
-{
-    char dest[20];
-    const char *src = "Hello, World!";
-    unsigned int len;
-
-    len = ft_strlcpy(dest, src, sizeof(dest));
-
-    printf("Copied string: %s\n", dest);
-    printf("Length of src: %u\n", len);
-
-    return 0;
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }
