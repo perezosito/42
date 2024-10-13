@@ -24,6 +24,14 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 # Archivos objeto
 OBJ = $(SRC:.c=.o)
 
+# Archivos de bonus
+BONUS_SRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
+            ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
+            ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
+
+# Archivos objeto de bonus
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
+
 # Nombre de la librería
 NAME = libft.a
 
@@ -31,12 +39,17 @@ NAME = libft.a
 all: $(NAME)
 
 # Regla para crear la librería
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+$(NAME): $(OBJ) $(BONUS_OBJ)
+	ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
+
+# Regla para compilar el ejecutable
+# Si solo necesitas compilar la librería sin bonus, puedes usar esto en lugar de la línea anterior:
+# $(NAME): $(OBJ)
+#     ar rcs $(NAME) $(OBJ)
 
 # Regla para limpiar los archivos objeto
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(BONUS_OBJ)
 
 # Regla para limpiar todo (archivos objeto y librería)
 fclean: clean
@@ -45,5 +58,5 @@ fclean: clean
 # Regla para recompilar desde cero
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
