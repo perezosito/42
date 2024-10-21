@@ -42,6 +42,9 @@ NAME = libft.a
 # Regla por defecto
 all: $(NAME)
 
+# Regla para compilar y limpiar archivos objeto
+compile_and_clean: all clean
+
 # Regla para crear la librería
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)

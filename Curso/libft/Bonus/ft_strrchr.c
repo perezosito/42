@@ -13,16 +13,18 @@
 // ft_strrchr.c
 #include "libft.h"
 
-char *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-    const char *last_occurrence = NULL;
+	const char	*last_occurrence;
 
-    while (*s)
-    {
-        if (*s == (char)c)
-            last_occurrence = s;
-        s++;
-    }
-    return (c == '\0') ? (char *)s : (char *)last_occurrence;
+	last_occurrence = NULL;
+	while (*s)
+	{
+		if (*s == (char)c)
+			last_occurrence = s;
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
+	return ((char *)last_occurrence);
 }
-
